@@ -81,14 +81,14 @@ export default function NWTuotteetListPop() {
                         <Octicons name="sync" size={24} color="black" />
                     </View>
                 </Pressable>
-                <ActivityIndicator size="small" color="#0000ff" animating={refreshIndicator} />{/* ActivityIndicator aktivoituu refreshJsonData() -funktiossa ja se deaktivoidaan GetProducts() -funktiossa */}
+                <ActivityIndicator size="small" color="#0000ff" animating={refreshIndicator} />
 
             </View>
             <ScrollView>
                 {productItems.map((item: INWProductsResponse) => (
 
-                    <Pressable 
-                        key={item.productId} 
+                    <Pressable
+                        key={item.productId}
                         onPress={() => {
                             setProduct(item);
                             setProductDetailsModal(true);
@@ -97,12 +97,12 @@ export default function NWTuotteetListPop() {
                     >
                         <View style={styles.productsContainer}>
                             {/*Mikäli item.imageLink on undefined -> näytetään default -kuva, muuten item.imageLink*/}
-                            <Image source={item.imageLink ? { uri: item.imageLink } : { uri: 'https://www.tibs.org.tw/images/default.jpg' }} 
+                            <Image source={item.imageLink ? { uri: item.imageLink } : { uri: 'https://www.tibs.org.tw/images/default.jpg' }}
                                 style={[styles.centerSection, { height: 60, width: 60, backgroundColor: '#eeeeee', margin: 6, }]} />
                             <View style={{ flexGrow: 1, flexShrink: 1, alignSelf: 'center' }}>
                                 <Text style={{ fontSize: 15 }}>{item.productName}</Text>
                                 <Text style={{ color: '#8f8f8f' }}>{item.category ? 'Variation: ' + item.category : ''}</Text>
-                                <Text style={{ color: '#333333', marginBottom: 10 }}>{'\u00E1 ' + (item.unitPrice == null ? 'unitprice is missing ' : item.unitPrice.toFixed(2))  + '\u20AC'}</Text>
+                                <Text style={{ color: '#333333', marginBottom: 10 }}>{'\u00E1 ' + (item.unitPrice == null ? 'unitprice is missing ' : item.unitPrice.toFixed(2)) + '\u20AC'}</Text>
                             </View>
                             {/*Euro -merkki tulee '\u20AC' käyttämällä...*/}
                             {/*á -merkki tulee '\u00E1' käyttämällä...*/}
@@ -110,9 +110,9 @@ export default function NWTuotteetListPop() {
 
                     </Pressable>
                 ))}
-               {/* Modal starts here */}
-               <Modal
-                    animationType="slide"
+                {/* Modal starts here */}
+                <Modal
+                    animationType="fade"
                     transparent={true}
                     visible={productDetailsModal}
                     onRequestClose={() => {
@@ -120,14 +120,14 @@ export default function NWTuotteetListPop() {
                 >
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-                        <Text style={styles.modalTitle}>Tuotteen tiedot</Text>
+                            <Text style={styles.modalTitle}>Tuotteen tiedot</Text>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Product Id: '}</Text>
-                                <Text style={styles.modalText}>{ product.productId}</Text>
+                                <Text style={styles.modalText}>{product.productId}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Product Name: '}</Text>
-                                <Text style={styles.modalText}>{ product.productName }</Text>
+                                <Text style={styles.modalText}>{product.productName}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Supplier Id: '}</Text>
@@ -147,19 +147,19 @@ export default function NWTuotteetListPop() {
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Units In Stock: '}</Text>
-                                <Text style={styles.modalText}>{ product.unitsInStock}</Text>
+                                <Text style={styles.modalText}>{product.unitsInStock}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Units On Order: '}</Text>
-                                <Text style={styles.modalText}>{ product.unitsOnOrder }</Text>
+                                <Text style={styles.modalText}>{product.unitsOnOrder}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Reorder Level: '}</Text>
-                                <Text style={styles.modalText}>{ product.reorderLevel }</Text>
+                                <Text style={styles.modalText}>{product.reorderLevel}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Discontinued: '}</Text>
-                                <Text style={styles.modalText}>{ product.discontinued ? product.discontinued.toString() : 'false' }</Text>
+                                <Text style={styles.modalText}>{product.discontinued ? product.discontinued.toString() : 'false'}</Text>
                             </View>
                             <View style={styles.modalInfo}>
                                 <Text style={styles.modalTextTitle}>{'Image: '}</Text>

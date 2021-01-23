@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-picker/picker": "github:react-native-picker/picker",
     "@react-navigation/material-top-tabs": "^5.3.11",
     "@react-navigation/native": "^5.9.0",
     "expo": "~39.0.2",
@@ -16,6 +17,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-gesture-handler": "^1.9.0",
+    "react-native-picker": "^4.3.7",
     "react-native-reanimated": "^1.13.2",
     "react-native-tab-view": "^2.15.2",
     "react-native-web": "~0.13.12"
