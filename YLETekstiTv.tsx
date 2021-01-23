@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, Platform, ScrollView, TextInput, Button } from 'react-native';
 import { API_id, API_key } from './APIKeys';
+import { Octicons } from '@expo/vector-icons'; //vector-icons tuodaan näin
 
 export default function YLETekstiTV100() {
     const [imageUrl, setUrl] = useState<string>();
@@ -12,13 +13,15 @@ export default function YLETekstiTV100() {
                 <Text style={styles.title}>Ylen tekstitv:n pääsivu</Text>
                 <View style={styles.separatorLine} />
                 <View style={styles.searchSection}>
-                    <Button title="<<" onPress={() => changeInputPage(inputPage - 1)} />
+                    <Octicons name="triangle-left" size={45} color="black" onPress={() => changeInputPage(inputPage + 1)} />
+                    {/* <Button title="<<" onPress={() => changeInputPage(inputPage-1)} />   */}
                     <TextInput
                         style={{ height: 40, borderColor: 'gray', borderWidth: 1, backgroundColor: 'white', fontSize: 22, textAlign: 'center', margin: 2, width: 240 }}
                         onChangeText={(text) => changeInputPage(Number(text))}
                         value={inputPage.toString()}
                     />
-                    <Button title=">>" onPress={() => changeInputPage(inputPage + 1)} />
+                    <Octicons name="triangle-right" size={45} color="black" onPress={() => changeInputPage(inputPage + 1)} />
+                    {/* <Button title=">>" onPress={() => changeInputPage(inputPage+1)} /> */}
                 </View>
                 <View style={styles.imageSection}>
                     <Image

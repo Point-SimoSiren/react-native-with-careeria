@@ -13,7 +13,7 @@ export default function HelloWorld() {
     return (
         <View style={styles.container2}>
             <View>
-                <Text>Terve Maailma!</Text>
+                <Text>Terve Porvoo!</Text>
             </View>
             <View>
                 <Text style={styles.bigCentered}>{counter}</Text>

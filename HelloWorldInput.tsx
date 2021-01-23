@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native';
+import {StyleSheet, Text, TextInput, View, Button, ScrollView, TouchableOpacity } from 'react-native';
 
 export default function HelloWorldInput() {
     //HOOKS -muuttujia:
@@ -11,7 +11,7 @@ export default function HelloWorldInput() {
     //Funktio, jota buttoni kutsuu:
     const showName = (name: string) => {
         changeOutputName(name);
-        setArray(array => [...array, '\n' + name]);
+        setArray(array => [...array, name + '\n']);
     }
 
     setTimeout(
@@ -27,20 +27,26 @@ export default function HelloWorldInput() {
             <View>
                 <Text style={styles.bigCentered}>{counter}</Text>
             </View>
-            <View>
+            <View style={styles.container3}>
                 <Text>Anna nimi:</Text>
                 <TextInput 
-                    style = {{ height: 40, borderColor: 'gray', backgroundColor: 'white', padding: 4, borderWidth: 1, margin: 2,}}
+                    style = {{ height: 40,  width: 120, borderColor: 'gray', backgroundColor: 'white', padding: 4, borderWidth: 1, margin: 2,}}
                     onChangeText={text => setName(text)}
                     value={name}
                 />
-                <Button 
-                    title="Lisää henkilö"
-                    onPress={() => showName(name)}
-                />
+                <View style = {{ width: 120,}}>
+                    <Button 
+                        title="Lisää henkilö"
+                        onPress={() => showName(name)}
+                    />
+                </View>
+                <TouchableOpacity style={{ marginTop: 1, backgroundColor: 'gray' }} onPress={() => setArray([])}>
+                    <Text style={{ height: 40, width: 120, textAlign: 'center', fontSize: 18, textAlignVertical: 'center', 
+                    padding: 1, borderWidth: 1, borderColor: 'gray'}}>Tyhjennä</Text>
+                </TouchableOpacity>    
                 <ScrollView style={styles.scrollView} fadingEdgeLength={180}>
                     {/* <Text>{outputName}</Text> */}
-                    <Text style={{fontSize: 24}}>{array}</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 24}}>{array}</Text>
                 </ScrollView>
             </View>
         </View>
@@ -49,10 +55,16 @@ export default function HelloWorldInput() {
 
 const styles = StyleSheet.create({
     container2: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 44,
+        width: '100%',
+        flex: 1,
+        alignItems: 'center',
+        padding: 1,
+    },
+    container3: {
+        width: '100%',
+        flex: 1,
+        alignItems: 'center',
+        padding: 1,
     },
     bigCentered: {
         color: 'blue',
